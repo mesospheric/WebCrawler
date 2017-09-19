@@ -11,7 +11,7 @@ On the command line from the top folder of the project type 'java -jar ./target/
 
 
 ## Threading
-My crawler uses a thread pool for retrieving and parsing the page contents. I felt this would speed up performance as there would always be multiple pages to work on. 
+My crawler uses a thread pool for retrieving and parsing the page contents. I felt this would speed up performance as there would always be multiple pages to work on. Using threads to get data over the HTTP connection is much more efficient than using a single main thread as that will block until the response is returned. 
 
 The way that the crawler detects that that all crawling has ceased is not production ready, but I ran out of time. A much better solution would be to utilise the Futures returned by the task submission and then track that all of these have completed. 
 
@@ -28,9 +28,10 @@ I created a simple formatting implementation class that could easily be substitu
 
 ## Known Issues
 
-1. When parsing a domain like manning.com a link that was returned of the form accounts.manning.com is not be detected as belonging to the same domain.
-2. When parsing a domain like manning.com a link that was returned of the form www.manning.com is not be detected as belonging to the same domain.
+1. When parsing a domain like manning.com a link that was returned of the form accounts.manning.com is not detected as belonging to the same domain.
+2. When parsing a domain like manning.com a link that was returned of the form www.manning.com is not detected as belonging to the same domain.
 3. The crawler would benefit from a configuration file instead of hard coding values in the program, for instance, thread pool max size
 4. There is no use of logging frameworks in the code, this would be simple to implement
 5. Some high level acceptance tests that parsed data a test site made from local html files would be useful addition.
+6. There is an overloaded constrcutor in the PageCrawlerCallable to allow aan extra parameter to be passed which allows mocking of a static method. Its not an ideal solution but was a quick work around to get the test running.
 
