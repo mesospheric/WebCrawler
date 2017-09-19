@@ -1,0 +1,34 @@
+Dont use both site and domain - bah keep
+
+Unit tests
+----------
+
+PageCrawlerCallable
+CrawlerMain
+
+
+Implement Logging to file
+
+Build create jar
+
+Execute command line referencing jar - See logs created
+
+exceptions
+
+
+
+
+Readme.md
+---------
+
+Threading for getting pages and parsing - efficient
+
+JSoup easy to us, drawback on Url connection re-use, not as efficient as UrlHttpConnection
+
+did not use parrallel stream to process
+
+www.pingdom issue
+
+alerts.pingdom.com issue
+
+configuration
